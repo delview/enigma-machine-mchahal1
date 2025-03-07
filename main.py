@@ -1,4 +1,7 @@
-def encrypter(msg):
+# TASK: Enigma Machine
+
+# Create two functions that will accept parameters in the form of a list or dictionary that contains the str to be encrypted or decrypted
+def encrypter(msg, cryptedlist):
     enlist = {
         'a':11,
         'b':12,
@@ -35,7 +38,7 @@ def encrypter(msg):
         else:
             print("no")
 
-def decrypter(decryptlist):
+def decrypter(decryptlist, cryptedlist):
         delist = {
         11:'a',
         12:'b',
@@ -71,23 +74,37 @@ def decrypter(decryptlist):
             else:
                 print("no")
         return cryptedlist
+
+def runagain():
+    choice = input("Would you like to run again? Enter [y] or [n]: ").strip().lower()
+    if choice == "y":
+        mainprogram()
+    if choice == "n":
+         print("Bye!")
+         return
+    else:
+         print("Enter only [y] or [n]: ")
+    
 # Ask user if they want to decrypt or encrypt a message
-decryptlist = []
-cryptedlist = []
-choice = input("Would you like to [e]ncrypt or [d]ecrypt a message? ")
-if choice == 'e':
-    msg = input("Enter the message: ")
-# take string and call function to encrypt or decrypt
-    encrypter(msg)
-if choice == 'd':
-    numofgroups = int(input("How many groups of numbers are there?"))
-    for i in range(numofgroups):
-        decryptlist.append(int(input("Type a group: ")))
-    decrypter(decryptlist)
+def mainprogram():
+    decryptlist = []
+    cryptedlist = []
+
+    choice = input("Would you like to [e]ncrypt or [d]ecrypt a message? ")
+    if choice == 'e':
+        msg = input("Enter the message: ")
+    # take string and call function to encrypt or decrypt
+        encrypter(msg, cryptedlist)
+
+    if choice == 'd':
+        numofgroups = int(input("How many groups of numbers are there?"))
+        for i in range(numofgroups):
+            decryptlist.append(int(input("Type a group: ")))
+        decrypter(decryptlist)
+
+    # present new msg and allow user to repeat the program with that new msg
+    for i in cryptedlist:
+            print(i, " / ", end = " ")
 
 
-
-# Create two functions that will accept parameters in the form of a list or dictionary that contains the str to be encrypted or decrypted
-# present new msg and allow user to repeat the program with that new msg
-for i in cryptedlist:
-    print(i)
+mainprogram()
