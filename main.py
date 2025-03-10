@@ -89,7 +89,6 @@ def runagain():
 def mainprogram():
     decryptlist = []
     cryptedlist = []
-    nndecryptlist = []
     code = []
 
     choice = input("Would you like to [e]ncrypt or [d]ecrypt a message? ").strip().lower()
@@ -98,24 +97,16 @@ def mainprogram():
     # take string and call function to encrypt or decrypt
         encrypter(msg, cryptedlist)
 
-    # if choice == 'd':
-    #     numofgroups = int(input("How many groups of numbers are there total? (e.g 21 / 33 / 51 = 3): ").strip())
-    #     for i in range(numofgroups):
-    #         decryptlist.append(int(input("Enter a group: ")))
-    #     decrypter(decryptlist, cryptedlist)
-# Test to find abetter way to enter a encryped list
+
+# asks user for the code and number of groups for decryption of the message
     if choice == 'd':
-            numofgroups = int(input("How many groups of numbers are there total? (e.g 21 / 33 / 51 = 3): "))
-            code = str(input("Enter the code: ")).strip("/")
-            print(code)
-            nndecryptlist.append(code)
-            for x in range(numofgroups):
-                result = ''.join(nndecryptlist[0], nndecryptlist[1] )
-                nndecryptlist.remove(nndecryptlist[0], nndecryptlist[1])
-            print(result)
-            decrypter(decryptlist, cryptedlist)
-
-
+        code = input("Enter the code: ").strip()
+        code = code.replace(" ", "").split("/") # remove spaces and splits the string's groups into numbers in a list
+        result = ''.join(code)
+        print(result)
+        for groups in code:
+            decryptlist.append(int(groups))
+        decrypter(decryptlist, cryptedlist)
 
     # present new msg and allow user to repeat the program with that new msg
     if choice == "d":
@@ -128,3 +119,5 @@ def mainprogram():
 
 mainprogram()
 31 / 15 / 12 / 42 / 34 / 33 
+
+     
