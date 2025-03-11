@@ -32,21 +32,20 @@ def encrypter(msg, cryptedlist):
     }
     text = msg
     char_list = list(text)
+    notcrypcount = 0
     for x in char_list:
         if x in enlist:
             cryptedlist.append(enlist[x])
         else:
-            print("Character not encrptable")
+            notcrypcount += 1
+    
+    print(f"({notcrypcount}) Character not encrptable")
+    return cryptedlist
 
 def decrypter(decryptlist, cryptedlist):
         delist = {
-        11:'a',
-        12:'b',
-        13:'c',
-        14:'d',
-        15:'e',
-        21:'f',
-        22:'g',
+        11:'a', 12:'b', 13:'c', 14:'d', 15:'e',
+        21:'f', 22:'g',
         23:'h',
         24:'i',
         24:'j',
@@ -67,12 +66,14 @@ def decrypter(decryptlist, cryptedlist):
         54:'y',
         55:'z',
     }
-        
+        notcrypcount = 0
         for x in decryptlist:
             if x in delist:
                 cryptedlist.append(delist[x])
             else:
-                print("no")
+                notcrypcount += 1
+    
+        print(f"({notcrypcount}) Character were not encryptable")
         return cryptedlist
 
 def runagain():
@@ -85,6 +86,19 @@ def runagain():
     else:
          print("Enter only [y] or [n]: ")
     
+#  def errorfixer(msg, choice):
+#     while True:
+#         try:
+#             if choice == "e":
+#                 if 
+#                 
+
+            
+#             if choice == "d":
+               
+            
+
+
 # Ask user if they want to decrypt or encrypt a message
 def mainprogram():
     decryptlist = []
@@ -110,12 +124,16 @@ def mainprogram():
 
     # present new msg and allow user to repeat the program with that new msg
     if choice == "d":
+        print("The decrypted message is: ")
         for i in cryptedlist:
             print(i.upper(), end = "")
-            
+        print(" ")
     if choice == "e":
+        print("The encrypted message is: ")
         for i in cryptedlist:
             print(i, "/", end = " ")
+        print(" ")
+    runagain()
 
 mainprogram()
 31 / 15 / 12 / 42 / 34 / 33 
